@@ -40,7 +40,7 @@ function showList(items, itemsPerPage) {
   let listProperties = ''
   for (let i = 0; i < itemsPerPage; i++) {
     if (i < items.length) {
-      listProperties += `<div><p>${items[i].nome}</p>
+      listProperties += `<div class="item"><p>${items[i].nome}</p>
                          <p>${items[i].email}</p></div>`
     }
   }
@@ -50,7 +50,7 @@ function showList(items, itemsPerPage) {
 function showNumerOfPages(numberOfPages) {
   let html = '<ul>'
   for (let i = 1; i <= numberOfPages; i++) {
-    html += `<li><a>${i}</a></li>`
+    html += `<li><button>${i}</button></li>`
   }
   html += '</ul>'
   document.querySelector('header .pagination').innerHTML = html
@@ -76,4 +76,7 @@ function pagination(items, pageActual, limitItems) {
   showList(results, limitItems)
 }
 
-pagination(items, 1, 5)
+pagination(items, 2, 2)
+
+const nav = document.querySelector('header nav')
+nav.addEventListener('click', () => {})
