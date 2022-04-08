@@ -29,27 +29,27 @@ export default function Pagination({ total, limit, onPageChanged }) {
       const endPage = Math.min(totalPages - 1, currentPage + pageNeighbours)
       let pages = range(startPage, endPage)
 
-      const hasLeftSpill = startPage > 2
-      const hasRightSpill = (totalPages - endPage) > 1
-      const spillOffset = totalNumbers - (pages.length + 1)
+      const hasLeftPages = startPage > 2
+      const hasRightPages = (totalPages - endPage) > 1
+      const pagesOffset = totalNumbers - (pages.length + 1)
 
       switch (true) {
         // handle: (1) ... {5} [7] {8} (10)
-        case (hasLeftSpill && !hasRightSpill): {
-          const extraPages = range(startPage - spillOffset, startPage - 1);
+        case (hasLeftPages && !hasRightPages): {
+          const extraPages = range(startPage - pagesOffset, startPage - 1);
           pages = [LEFT_PAGE, ...extraPages, ...pages];
           break;
         }
 
         // handle: (1) {3} [4] {5} ... (10)
-        case (!hasLeftSpill && hasRightSpill): {
-          const extraPages = range(endPage + 1, endPage + spillOffset);
+        case (!hasLeftPages && hasRightPages): {
+          const extraPages = range(endPage + 1, endPage + pagesOffset);
           pages = [...pages, ...extraPages, RIGHT_PAGE];
           break;
         }
 
         // handle: (1) ... {5} [6] {7} ... (10)
-        case (hasLeftSpill && hasRightSpill):
+        case (hasLeftPages && hasRightPages):
         default: {
           pages = [LEFT_PAGE, ...pages, RIGHT_PAGE];
           break;
@@ -105,13 +105,19 @@ export default function Pagination({ total, limit, onPageChanged }) {
 
   return (
     <ul className="pagination">
-      {currentPage > 3 && totalPages > 6 ?
+      {totalPages > 6 ?
         <>
           <li>
             <button onClick={handleBackToFirst}>{"<<<"}</button>
           </li>
           <li>
-            <button onClick={handlePreviousClick}>{"<"}</button>
+            <button
+              onClick={handlePreviousClick}
+              disabled={currentPage == 1 ? true : false}
+
+            >
+              {"<"}
+            </button>
           </li>
         </> : null
       }
@@ -132,10 +138,15 @@ export default function Pagination({ total, limit, onPageChanged }) {
           </li>
         )
       })}
-      {currentPage != totalPages && totalPages > 6 ?
+      {totalPages > 6 ?
         <>
           <li>
-            <button onClick={handleNextClick}>{">"}</button>
+            <button
+              onClick={handleNextClick}
+              disabled={currentPage == totalPages ? true : false}
+            >
+              {">"}
+            </button>
           </li>
           <li>
             <button onClick={handleGoToLastPage}>{">>>"}</button>
