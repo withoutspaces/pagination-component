@@ -68,7 +68,6 @@ export default function Pagination({ total, limit, onPageChanged }) {
   }, [])
 
   const goToPage = page => {
-    onPageChanged = event => event
     const currentPage = Math.max(0, Math.min(page, totalPages))
     const paginationData = {
       currentPage,
@@ -76,9 +75,9 @@ export default function Pagination({ total, limit, onPageChanged }) {
       pageLimit: limit,
       totalRecords: total
     }
+
     setCurrentPage(currentPage)
     onPageChanged(paginationData)
-    console.log(paginationData)
   }
 
   const handleClick = page => event => {

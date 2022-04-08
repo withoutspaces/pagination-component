@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { faker } from '@faker-js/faker'
 
 import './App.css'
-import List from './Components/List.jsx'
 import Pagination from './Components/Pagination'
 import Item from './Components/Item'
 
@@ -13,9 +12,8 @@ const TOTAL_ITEMS = 230
 export default function App() {
   const [data, setData] = useState([])
   const [currentItems, setCurrentItems] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
 
-  function generateUsers(items) {
+  function generateData(items) {
     let users = []
 
     for (let id = 0; id < items; id++) {
@@ -34,35 +32,33 @@ export default function App() {
   }
 
   useEffect(() => {
-    generateUsers(TOTAL_ITEMS)
+    generateData(TOTAL_ITEMS)
   }, [])
 
-  const onPageChanged = () => {
+  const onPageChanged = ({ currentPage }) => {
     const offset = (currentPage - 1) * ITEMS_PER_PAGE
+    console.log('offset = ', offset, 'curr ==', currentPage, currentItems)
     setCurrentItems(data.slice(offset, offset + ITEMS_PER_PAGE))
   }
 
-
-  console.log(currentItems)
-
-
   return (
     <section className='section'>
-      <div className='container'>
+      <nav className='container'>
         <Pagination
           limit={ITEMS_PER_PAGE}
           total={TOTAL_ITEMS}
           onPageChanged={onPageChanged}
         />
-        {currentItems.map(item => {
-          return (
-            <Item
-              name={item.first_name + ' ' + item.last_name}
-              email={item.email}
-            />
-          )
-        })}
-      </div>
+      </nav>
+      {currentItems.map(item => {
+        return (
+          <Item
+            key={item.key}
+            name={item.first_name + ' ' + item.last_name}
+            email={item.email}
+          />
+        )
+      })}
     </section>
   )
 }
