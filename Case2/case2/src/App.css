@@ -1,0 +1,44 @@
+.container {
+  width: 70%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.pagination ul {
+  margin-block-start: 0 !important;
+
+}
+
+.pagination li+li {
+  margin-left: 1rem;
+}
+
+.pagination button {
+  background: #fff;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  border: 0.1px solid rgba(0, 0, 0, 0.24);
+}
+
+.pagination .button-active {
+  background: rgb(212, 211, 211);
+  border: none;
+}
