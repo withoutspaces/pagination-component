@@ -1,17 +1,14 @@
-.container {
-  width: 100%;
-}
-
 .section {
   display: flex;
-  margin: 0 auto;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
-  width: 70%;
 }
 
 .item {
+  margin-left: 2.5rem;
   margin-bottom: 1rem;
+  width: 35rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 8px;
   padding: 0.5rem;
@@ -20,16 +17,10 @@
 .pagination {
   display: flex;
   list-style: none;
-  justify-content: center;
-}
-
-.pagination ul {
-  margin-block-start: 0 !important;
-
 }
 
 .pagination li+li {
-  margin-left: 1rem;
+  margin-left: .5rem;
 }
 
 .pagination button {
@@ -38,6 +29,7 @@
   width: 40px;
   height: 40px;
   border: 0.1px solid rgba(0, 0, 0, 0.24);
+  cursor: pointer;
 }
 
 .pagination .button-active {

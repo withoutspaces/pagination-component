@@ -3,7 +3,7 @@ import React from 'react'
 const Item = (Props) => {
   return (
     <div className="item">
-      <p>{Props.name}</p>
+      <h4>{Props.name}</h4>
       <p>{Props.email}</p>
     </div>
   )
