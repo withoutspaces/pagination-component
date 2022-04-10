@@ -113,7 +113,7 @@ export default function Pagination({ total, limit, onPageChanged }) {
           <li>
             <button
               onClick={handlePreviousClick}
-              disabled={currentPage == 1 ? true : false}
+              disabled={currentPage ? true : false}
 
             >
               {"<"}
