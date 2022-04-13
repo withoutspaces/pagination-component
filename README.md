@@ -1,7 +1,7 @@
 ### pagination-component
 
 ## 💻 Projeto
-Esse projeto serviu de estudo afim de melhorar minhas habilidades Javascript.
+Esse projeto serviu de estudo a fim de melhorar minhas habilidades Javascript.
 
 ## 🔎 Executando o projeto
 
