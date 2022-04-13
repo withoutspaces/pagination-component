@@ -85,35 +85,23 @@ export default function Pagination({ total, limit, onPageChanged }) {
     goToPage(page)
   }
 
-  const handlePreviousClick = event => {
-    event.preventDefault()
-    goToPage(currentPage - 1)
-  }
-  const handleNextClick = event => {
-    event.preventDefault()
-    goToPage(currentPage + 1)
-  }
-
-  const handleBackToFirst = event => {
-    event.preventDefault()
-    goToPage(1);
-  }
-  const handleGoToLastPage = event => {
-    event.preventDefault()
-    goToPage(totalPages);
-  }
-
   return (
     <ul className="pagination">
       {totalPages > 6 ?
         <>
           <li>
-            <button onClick={handleBackToFirst}>{"<<<"}</button>
+            <button
+              onClick={handleClick(1)}
+              /* handleClick(1) == first page */
+              disabled={currentPage == 1}
+            >
+              {"<<<"}
+            </button>
           </li>
           <li>
             <button
-              onClick={handlePreviousClick}
-              disabled={currentPage == 1 ? true : false}
+              onClick={handleClick(currentPage - 1)}
+              disabled={currentPage == 1}
 
             >
               {"<"}
@@ -142,14 +130,19 @@ export default function Pagination({ total, limit, onPageChanged }) {
         <>
           <li>
             <button
-              onClick={handleNextClick}
-              disabled={currentPage == totalPages ? true : false}
+              onClick={handleClick(currentPage + 1)}
+              disabled={currentPage == totalPages}
             >
               {">"}
             </button>
           </li>
           <li>
-            <button onClick={handleGoToLastPage}>{">>>"}</button>
+            <button
+              onClick={handleClick(totalPages)}
+              disabled={currentPage == totalPages}
+            >
+              {">>>"}
+            </button>
           </li>
         </> : null
       }
