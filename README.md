@@ -13,5 +13,5 @@ $ npm install
 $ npm start
 ```
 
-##🖼️ Screenshots
+## 🖼️ Screenshots
   <img src="https://github.com/withoutspaces/pagination-component/blob/development/demo/screenshot-1.jpg?raw=true" />
