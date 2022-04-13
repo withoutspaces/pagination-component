@@ -93,7 +93,7 @@ export default function Pagination({ total, limit, onPageChanged }) {
             <button
               onClick={handleClick(1)}
               /* handleClick(1) == first page */
-              disabled={currentPage == 1}
+              disabled={currentPage === 1}
             >
               {"<<<"}
             </button>
@@ -101,7 +101,7 @@ export default function Pagination({ total, limit, onPageChanged }) {
           <li>
             <button
               onClick={handleClick(currentPage - 1)}
-              disabled={currentPage == 1}
+              disabled={currentPage === 1}
 
             >
               {"<"}
@@ -131,7 +131,7 @@ export default function Pagination({ total, limit, onPageChanged }) {
           <li>
             <button
               onClick={handleClick(currentPage + 1)}
-              disabled={currentPage == totalPages}
+              disabled={currentPage === totalPages}
             >
               {">"}
             </button>
@@ -139,7 +139,7 @@ export default function Pagination({ total, limit, onPageChanged }) {
           <li>
             <button
               onClick={handleClick(totalPages)}
-              disabled={currentPage == totalPages}
+              disabled={currentPage === totalPages}
             >
               {">>>"}
             </button>
